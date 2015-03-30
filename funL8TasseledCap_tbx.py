@@ -17,6 +17,20 @@ arcpy.CheckOutExtension("Spatial")
 inputL8Directory = arcpy.GetParameterAsText(0)
 full = arcpy.GetParameterAsText(1)
 
+#######################################################################
+def tbxPrint(fBad,inStr):
+    '''a general purpose function for try/except printing
+    inside a toolbox function'''
+    try:
+        arcpy.AddMessage(inStr)
+        #fBad.write(inStr)
+    except:
+        print inStr
+    finally:
+        pass
+        #fBad.write(inStr+"\n")
+#######################################################################
+
 def L8_TCT(inputL8Directory, full):
     '''     Tasseled Cap Transform for L8 OLI data  (from Baig et al 2015)
             see citation in source 
